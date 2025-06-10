@@ -1,26 +1,26 @@
-package HIHI;
+package HIHI; //패키지 선언
 
-public class GameManager {
-    private int day = 1;
-    private final int MAX_DAY = 30;
+public class GameManager { //클래스 선언
+    private int day = 1; //시작일
+    private final int MAX_DAY = 30; //끝
 
-    private final Student student = new Student();
+    private final Student student = new Student(); //학생 상태 생성자 호출!
 
     public boolean isGameOver() {
-        return day > MAX_DAY;
+        return day > MAX_DAY; //끝 확인
     }
 
-    public void nextDay() {
+    public void nextDay() { //다음날
         day++;
-        student.resetDay(); // turn/stamina 다 초기화
+        student.resetDay(); // turn과 stamina 다 초기화와 랜덤행동생성!
     }
 
-    public String getEnding() {
+    public String getEnding() { //끝났을때 능력치로 합격했는지 함수!!
         int kor = student.getStats().get("국어");
         int eng = student.getStats().get("영어");
         int math = student.getStats().get("수학");
         int phy = student.getStats().get("물리");
-        int chem = student.getStats().get("화학");
+        int chem = student.getStats().get("화학"); // Student의 MAP 함수에서 각 과목의 점수를 불러옴!!
 
         if (kor >= 480 && eng >= 480 && math >= 480 && phy >= 480 && chem >= 480) {
             return "♥서울대 합격! 모든 과목 480점 이상 달성!";
@@ -39,15 +39,20 @@ public class GameManager {
         }  else {
             return "😥 불합격... 내년에 다시 도전하자!";
         }
-    }
+    } //조건들.
 
     
 
     public int getDay() {
         return day;
-    }
+    } //현재 날짜 확인 해주는 메소드.
 
     public Student getStudent() {
         return student;
-    }
+    } // Student 객체를 다른 클래스에서 접근할 수 있게 해주는 메소드
+    
+    
+    
+    
+    //게임의 전체 흐름 조절, 날짜 진행, 게임 종료 여부 판단, 능력치를 바탕으로 엔딩결정. 
 }
